@@ -1,0 +1,89 @@
+﻿{
+  "frames": {
+    "border0000": {
+      "frame": { "x": 0, "y": 215, "w": 924, "h": 108 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 924, "h": 108 },
+      "sourceSize": { "w": 924, "h": 108 }
+    },
+    "grass0000": {
+      "frame": { "x": 0, "y": 0, "w": 572, "h": 212 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 572, "h": 212 },
+      "sourceSize": { "w": 572, "h": 212 }
+    },
+    "grassLine0000": {
+      "frame": { "x": 575, "y": 0, "w": 211, "h": 206 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 211, "h": 206 },
+      "sourceSize": { "w": 211, "h": 206 }
+    },
+    "ground0000": {
+      "frame": { "x": 0, "y": 326, "w": 312, "h": 312 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 312, "h": 312 },
+      "sourceSize": { "w": 312, "h": 312 }
+    },
+    "icon_meter0000": {
+      "frame": { "x": 860, "y": 396, "w": 139, "h": 136 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 139, "h": 136 },
+      "sourceSize": { "w": 139, "h": 136 }
+    },
+    "icon_run0000": {
+      "frame": { "x": 713, "y": 396, "w": 144, "h": 143 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 143 },
+      "sourceSize": { "w": 144, "h": 143 }
+    },
+    "icon_throw0000": {
+      "frame": { "x": 789, "y": 0, "w": 144, "h": 144 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 144, "h": 144 },
+      "sourceSize": { "w": 144, "h": 144 }
+    },
+    "javelin0000": {
+      "frame": { "x": 0, "y": 641, "w": 943, "h": 10 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 943, "h": 10 },
+      "sourceSize": { "w": 943, "h": 10 }
+    },
+    "line_default0000": {
+      "frame": { "x": 315, "y": 396, "w": 395, "h": 67 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 395, "h": 67 },
+      "sourceSize": { "w": 395, "h": 67 }
+    },
+    "line_final0000": {
+      "frame": { "x": 315, "y": 326, "w": 569, "h": 67 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 569, "h": 67 },
+      "sourceSize": { "w": 569, "h": 67 }
+    },
+    "shadow0000": {
+      "frame": { "x": 315, "y": 466, "w": 347, "h": 16 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 347, "h": 16 },
+      "sourceSize": { "w": 347, "h": 16 }
+    }
+  },
+  "meta": {
+    "app": "Adobe Animate",
+    "version": "19.0.0.326",
+    "image": "items.png",
+    "format": "RGBA8888",
+    "size": { "w": 1024, "h": 1024 },
+    "scale": "1"
+  }
+}

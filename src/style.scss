@@ -1,0 +1,32 @@
+// @import "/src/fonts.scss";
+
+#game-sec {
+  margin: 0;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.loginScr {
+  .container {
+    .field {
+      .input {
+        // background-color: red($color: #000000);
+      }
+    }
+  }
+}
+
+.register_sec {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  display: none;
+  &.active {
+    display: block;
+  }
+}

@@ -1,0 +1,75 @@
+﻿{"frames": {
+
+"distance_card0000":
+{
+	"frame": {"x":498,"y":544,"w":495,"h":164},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":495,"h":164},
+	"sourceSize": {"w":495,"h":164}
+},
+"home_icon0000":
+{
+	"frame": {"x":0,"y":0,"w":572,"h":541},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":572,"h":541},
+	"sourceSize": {"w":572,"h":541}
+},
+"home_javelin0000":
+{
+	"frame": {"x":0,"y":977,"w":591,"h":204},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":591,"h":204},
+	"sourceSize": {"w":591,"h":204}
+},
+"home_throw0000":
+{
+	"frame": {"x":0,"y":1184,"w":546,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":546,"h":199},
+	"sourceSize": {"w":546,"h":199}
+},
+"new_record_card0000":
+{
+	"frame": {"x":498,"y":711,"w":494,"h":163},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":494,"h":163},
+	"sourceSize": {"w":494,"h":163}
+},
+"replayBtn0000":
+{
+	"frame": {"x":575,"y":122,"w":402,"h":119},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":402,"h":119},
+	"sourceSize": {"w":402,"h":119}
+},
+"score_card0000":
+{
+	"frame": {"x":0,"y":544,"w":495,"h":430},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":495,"h":430},
+	"sourceSize": {"w":495,"h":430}
+},
+"startBtn0000":
+{
+	"frame": {"x":575,"y":0,"w":402,"h":119},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":402,"h":119},
+	"sourceSize": {"w":402,"h":119}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "19.0.0.326",
+	"image": "items2.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":2048},
+	"scale": "1"
+}
+}
