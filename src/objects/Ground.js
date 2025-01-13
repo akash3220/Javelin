@@ -57,7 +57,7 @@ export default class Ground extends Phaser.GameObjects.Group {
         ground.x + ground.width * ground.scaleX <
         this.scene.cameras.main.scrollX +
         this.c_w +
-        1500 * this.scaleFact &&
+        700 * this.scaleFact &&
         !ground.getData("nextAdded")
       ) {
         ground.setData("nextAdded", true);

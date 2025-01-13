@@ -7,10 +7,17 @@ import Line from "../objects/Line";
 import { Global } from "../objects/global";
 import EventEmitter from "../objects/event-emitter";
 import Javelinstick from "../objects/Javelinstick";
+import MeterIcon from "../objects/MeterIcon";
 
 export default class Game extends Phaser.Scene {
   constructor() {
     super({ key: "Game" });
+
+    this.graphics;
+    this.maskShape;
+    this.angle = 0;
+    this.value = 360;
+    this.camXValue = 0.32;
   }
 
   init() {
@@ -40,6 +47,8 @@ export default class Game extends Phaser.Scene {
     this.Stadium.setup();
     this.Stadium.init();
 
+
+
     this.Character = new Character(
       this,
       this.extraLeftPer + 150 * this.scaleFact,
@@ -52,76 +61,11 @@ export default class Game extends Phaser.Scene {
     this.Character.init();
     this.Character.emitterMeth();
     Global.characterPos = this.Character;
-    this.objFollow = this.Character;
 
 
-    // this.image = this.add.image(this.Character.x, this.Character.y, "Items1", "icon_meter0000");
-    // this.image.setDepth(5);
-    // this.image.setScale(1);
-    // this.image.setOrigin(0.5, 0.5);
-
-
-    // this.maskShape = this.make.graphics({ x: 0, y: 0, add: false });
-    // this.maskShape.fillStyle(0xffffff, 1);
-    // this.maskShape.fillRect(200, 200, 1, this.image.height);  // Starting size
-
-    // this.mask = this.maskShape.createGeometryMask();
-    // this.image.setMask(this.mask);
-
-    // // Animate the mask
-    // this.tweens.add({
-    //   targets: this.maskShape,
-    //   x: 1000,
-    //   duration: 5000,
-    //   ease: 'Linear',
-    //   onUpdate: () => {
-    //     this.maskShape.clear();
-    //     this.maskShape.fillStyle(0xffffff, 1);
-    //     this.maskShape.fillRect(200, 200, this.maskShape.x - 200, 400);
-    //   }
-    // });
-
-    // this.add.text(400, 500, 'Loading...', {
-    //   font: '20px Arial',
-    //   fill: '#ffffff'
-    // }).setOrigin(0.5);
-
-
-
-    const border = this.add.graphics();
-    border.lineStyle(20, 0x00ff00, 1); // Green border
-    border.strokeRoundedRect(200, 200, 200, 200, 20); // Outer border (rounded rectangle)
-
-    // Create a gradient graphics
-    const gradientGraphics = this.add.graphics();
-    gradientGraphics.lineStyle(20, 0xff0000, 1); // Initially red
-    gradientGraphics.strokeRoundedRect(200, 200, 200, 200, 20);
-
-    // Step 2: Create the mask
-    const maskShape = this.make.graphics({ x: 0, y: 0, add: false });
-    maskShape.fillStyle(0xffffff, 1); // White fill for masking
-    maskShape.fillRect(200, 200, 1, 200); // Small rectangle for animation
-
-    const mask = maskShape.createGeometryMask(); // Create the mask object
-    gradientGraphics.setMask(mask); // Apply mask to the gradient graphics
-
-    // Step 3: Animate the mask to reveal the gradient
-    this.tweens.add({
-      targets: maskShape,
-      x: 400, // Move the mask to cover the whole gradient
-      duration: 3000, // Animation duration in milliseconds
-      ease: 'Linear',
-      onUpdate: () => {
-        maskShape.clear();
-        maskShape.fillStyle(0xffffff, 1);
-        maskShape.fillRect(200, 200, maskShape.x - 200, 200);
-      },
-      onComplete: () => {
-        console.log('Loading complete!');
-      }
-    });
-
-
+    // this.MeterIcon = new MeterIcon(this);
+    // this.MeterIcon.setup();
+    // this.MeterIcon.init();
 
     this.runButton = this.add
       .image(
@@ -153,7 +97,7 @@ export default class Game extends Phaser.Scene {
       false,
       0.8,
       0,
-      -this.c_w * 0.32 + this.extraLeftPer,
+      -this.c_w * this.camXValue + this.extraLeftPer,
       this.c_h * 0.39
     );
 
@@ -161,6 +105,33 @@ export default class Game extends Phaser.Scene {
       this.runButton.visible = false;
       this.startRunFlag = true;
       this.emitter.emit("game:startRun", this.startRunFlag);
+
+      setTimeout(() => {
+
+        // this.cameras.main.startFollow(
+        //   this.Character,
+        //   false,
+        //   0.8,
+        //   0,
+        //   -this.c_w * 0.32 + this.extraLeftPer,
+        //   this.c_h * 0.365
+        // );
+
+        // this.scene.tweens.add({
+        //   targets: this.cameras.main,
+        //   followOffsetX: {
+        //     followOffsetX: {
+        //       value: -this.c_w * 0.12 + this.extraLeftPer, // New offsetX value
+        //     }
+        //   },
+        //   duration: 1800,
+        //   ease: 'Linear',
+        // });
+
+
+      }, 500);
+
+
     });
 
 
@@ -186,6 +157,35 @@ export default class Game extends Phaser.Scene {
 
     // this.Javelinstick = new Javelinstick(this);
     // this.Javelinstick.setup();
+
+    // this.iconMeter = this.add
+    //   .image(
+    //     this.throwButton.x - 5,
+    //     this.throwButton.y - 10,
+    //     `Items1`
+    //   )
+    //   .setFrame(`icon_meter0000`)
+    //   .setScale(1.5 * this.scaleFact)
+    //   .setDepth(10);
+
+    // this.maskShape = this.add.graphics();
+    // this.mask = this.maskShape.createGeometryMask();
+    // this.iconMeter.setMask(this.mask);
+
+    // this.maskShape.clear();
+
+    // this.maskShape.fillStyle(0xffffff, 0);
+    // this.maskShape.slice(
+    //   this.iconMeter.x,
+    //   this.iconMeter.y,   // Center of the circle
+    //   250,              // Radius
+    //   Phaser.Math.DegToRad(this.angle),       // Start angle (in radians)
+    //   Phaser.Math.DegToRad(this.angle + this.value),  // End angle (in radians)
+    //   false                // Counter-clockwise
+    // );
+    // this.maskShape.fillPath();
+    // this.value -= 2;
+
   }
 
 
@@ -198,19 +198,21 @@ export default class Game extends Phaser.Scene {
 
     if (this.startRunFlag) {
       this.throwButton.x += 0.8 * this.scaleFact * delta;
+      // this.iconMeter.x += 0.8 * this.scaleFact * delta;
+      // this.maskShape.x += 0.8 * this.scaleFact * delta;
       this.elapsedTime += delta;
     }
 
-    if (Global.characterPos.x >= 2600) {
+    if (Global.characterPos.x >= 3400 * this.scaleFact) {
       Global.groundCount = 1;
     }
 
-    if (Global.characterPos.x >= 2600) {
+    if (Global.characterPos.x >= 2300 * this.scaleFact) {
       Global.lineCount = 1;
     }
 
     //for stoping
-    if (Global.characterPos.x >= 5100) {
+    if (Global.characterPos.x >= 4300 * this.scaleFact) {
       this.startRunFlag = false;
       this.throwButton.visible = true;
       this.emitter.emit("game:stopRun", this.startRunFlag);

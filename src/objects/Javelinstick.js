@@ -22,7 +22,6 @@ export default class Javelinstick extends Phaser.GameObjects.Group {
 
     this.emitter.on("game:update", this.update.bind(this));
     this.addStick();
-
   }
 
   init() {
