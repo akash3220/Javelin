@@ -46,8 +46,11 @@ export default class Ground extends Phaser.GameObjects.Group {
       .setScale(this.scaleFact * this.scalevalue)
       .setData("nextAdded", false)
       .setOrigin(0, 1)
-      .setDepth(-1);
+      .setDepth(-1)
+      .setAlpha(1);
 
+    // this.ground.setalpha(0);
+    // console.log(this.ground);
     Global.groundPos = this.ground;
   }
 

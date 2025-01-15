@@ -6,5 +6,6 @@ var Global = {
   groundCount: 0,
   characterPos: null,
   lineCount: 0,
+  charSpeed: 0,
 };
 export { Global };

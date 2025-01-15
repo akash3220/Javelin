@@ -6,7 +6,7 @@ export default class MeterIcon extends Phaser.GameObjects.Group {
   constructor(scene) {
     super(scene);
     scene.add.existing(this);
-    this.meterlineXValue = Global.characterPos.x;
+    this.meterlineXValue = Global.characterPos.x + 1000;
 
   }
   setup() {
@@ -23,7 +23,7 @@ export default class MeterIcon extends Phaser.GameObjects.Group {
   addMeterLine() {
     this.meterline = this.create(
       this.meterlineXValue,
-      Global.groundPos.y - 0.1 * this.scaleFact,
+      Global.groundPos.y * 0.68 * this.scaleFact,
       `Items1`
     )
       .setFrame("grassLine0000")
@@ -44,7 +44,7 @@ export default class MeterIcon extends Phaser.GameObjects.Group {
         !meterline.getData("nextAdded")
       ) {
         meterline.setData("nextAdded", true);
-        this.meterlineXValue = meterline.x + meterline.width * meterline.scaleX; // Update the last road X position
+        this.meterlineXValue = meterline.x + meterline.width * meterline.scaleX * 2.5; // Update the last road X position
         this.addMeterLine();
       }
     });

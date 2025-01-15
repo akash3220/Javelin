@@ -16,6 +16,8 @@ export default class Character extends Phaser.GameObjects.Sprite {
     this.startFrame = 0;
     this.endFrame = 1;
 
+
+
   }
 
   emitterMeth() {
@@ -38,10 +40,22 @@ export default class Character extends Phaser.GameObjects.Sprite {
     });
 
     this.anims.create({
-      key: "throw",
+      key: "beforeThrow",
       frames: this.anims.generateFrameNames("CharacterRunning2", {
         prefix: "character2",
         start: 0,
+        end: 18,
+        zeroPad: 4,
+      }),
+      repeat: 0,
+      frameRate: 15,
+    });
+
+    this.anims.create({
+      key: "throw",
+      frames: this.anims.generateFrameNames("CharacterRunning2", {
+        prefix: "character2",
+        start: 18,
         end: 29,
         zeroPad: 4,
       }),
@@ -79,7 +93,7 @@ export default class Character extends Phaser.GameObjects.Sprite {
     this.delta = delta;
     // console.log("this.delta " + this.frame.name);
     if (this.startRunFlag) {
-      this.x += 0.8 * this.scaleFact * this.delta;
+      this.x += Global.charSpeed * this.scaleFact * this.delta;
     }
   }
 }

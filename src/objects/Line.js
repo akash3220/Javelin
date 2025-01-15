@@ -57,7 +57,7 @@ export default class Line extends Phaser.GameObjects.Group {
           !line.getData("nextAdded")
         ) {
           line.setData("nextAdded", true);
-          this.lineXValue = line.x + line.width * line.scaleX * 0.9;
+          this.lineXValue = line.x + line.width * line.scaleX * 0.975;
           this.addLine(this.lineXValue);
         }
       });

@@ -3,16 +3,21 @@ import { setScaleFactor } from "./scale_factor"; // Import function to set the s
 import { Global } from "./global";
 
 export default class Javelinstick extends Phaser.GameObjects.Group {
-  constructor(scene) {
-    super(scene);
+  constructor(scene, x) {
+    super(scene, x);
 
     scene.add.existing(this);
+
+    this.lengthValue = x * 30;
+    // this.lengthValue = 3000;
+    // console.log(this.lengthValue);
     this.initialStickValue = { x: 0, y: 0 };
 
     this.graphics = this.scene.add.graphics();
     this.path = new Phaser.Curves.Path();
     this.path = new Phaser.Curves.Path(Global.characterPos.x + 100, Global.characterPos.y - 550);
-    this.path.ellipseTo(2000, 400, 200, -15, false, 0);
+    this.path.ellipseTo(this.lengthValue, 400, 200, 5, false, 0);
+    this.graphics.setAlpha(0);
 
   }
   setup() {
@@ -45,7 +50,7 @@ export default class Javelinstick extends Phaser.GameObjects.Group {
 
     this.scene.tweens.add({
       targets: this.Stick,
-      rotation: 0.785398,
+      rotation: 0.785398 - 0.6,
       duration: 1800,
       ease: 'Linear',
       yoyo: false,
