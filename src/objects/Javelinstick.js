@@ -8,22 +8,36 @@ export default class Javelinstick extends Phaser.GameObjects.Group {
 
     scene.add.existing(this);
 
-    this.lengthValue = x * 30;
+
+    // this.lengthValue = 5;
+    this.lengthValue = x * Global.charSpeed;
+    console.log(this.lengthValue);
     // this.lengthValue = 3000;
     // console.log(this.lengthValue);
     this.initialStickValue = { x: 0, y: 0 };
 
-    this.graphics = this.scene.add.graphics();
-    this.path = new Phaser.Curves.Path();
-    this.path = new Phaser.Curves.Path(Global.characterPos.x + 100, Global.characterPos.y - 550);
-    this.path.ellipseTo(this.lengthValue, 400, 200, 5, false, 0);
-    this.graphics.setAlpha(0);
+
 
   }
   setup() {
     setScaleFactor.call(this, false);
     this.emitter = EventEmitter.getObj();
     this.Stick;
+
+
+    this.graphics = this.scene.add.graphics();
+    this.path = new Phaser.Curves.Path();
+    this.path = new Phaser.Curves.Path(Global.characterPos.x, Global.characterPos.y);
+    // this.path = new Phaser.Curves.Path(Global.characterPos.x + 100, Global.characterPos.y - 550);
+
+    // this.path.ellipseTo(this.lengthValue, 400, 200, 5, false, 0);
+    this.path.splineTo([
+      Global.characterPos.x + 120 * (this.lengthValue / 30) * this.scaleFact,
+      (Global.characterPos.y / this.lengthValue) * this.scaleFact,
+      Global.characterPos.x + (200 * this.lengthValue * 10 * 3) * this.scaleFact,
+      Global.characterPos.y - 400 + 200 * this.scaleFact]);
+
+    this.graphics.setAlpha(1);
 
     this.emitter.on("game:update", this.update.bind(this));
     this.addStick();

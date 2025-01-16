@@ -9,6 +9,7 @@ import EventEmitter from "../objects/event-emitter";
 import Javelinstick from "../objects/Javelinstick";
 import MeterIcon from "../objects/MeterIcon";
 
+
 export default class Game extends Phaser.Scene {
   constructor() {
     super({ key: "Game" });
@@ -73,6 +74,8 @@ export default class Game extends Phaser.Scene {
       .image(
         this.c_w * 0.85 - this.extraLeftPer,
         this.c_h * 0.9 - this.extraTop,
+        // 0,
+        // 0,
         `Items1`
       )
       .setFrame(`icon_run0000`)
@@ -106,16 +109,16 @@ export default class Game extends Phaser.Scene {
 
     this.runButtonFlag = true;
     this.runButton.on("pointerdown", () => {
+      if (Global.characterPos.x <= 2300 * 1.8 * this.scaleFact) {
 
-      if (this.runButtonFlag) {
-        this.runButtonFlag = false;
-        this.startRunFlag = true;
-        this.emitter.emit("game:startRun", this.startRunFlag);
+        if (this.runButtonFlag) {
+          this.runButtonFlag = false;
+          this.startRunFlag = true;
+          this.emitter.emit("game:startRun", this.startRunFlag);
+        }
 
+        this.isTapping = true;
       }
-
-
-      this.isTapping = true;
     });
     this.runButton.on("pointerup", () => {
       this.isTapping = false;
@@ -161,8 +164,6 @@ export default class Game extends Phaser.Scene {
 
     // this.Javelinstick = new Javelinstick(this, this.value);
     // this.Javelinstick.setup();
-
-
   }
 
 
@@ -176,9 +177,8 @@ export default class Game extends Phaser.Scene {
 
     if (this.isTapping) {
       console.log("TapOn");
-      Global.charSpeed += 0.01;
+      Global.charSpeed += 0.02;
     } else {
-      // console.log("TapOff");
       Global.charSpeed = Math.max(0.8, Global.charSpeed - 0.005);
     }
 
@@ -224,7 +224,7 @@ export default class Game extends Phaser.Scene {
 
 
     //for stoping
-    if (Global.characterPos.x >= (((4300 * 1.4) - 1000) * this.scaleFact)) {
+    if (Global.characterPos.x >= (((1300 * 1.4) - 1000) * this.scaleFact)) {
       // if (Global.characterPos.x >= 1000 * this.scaleFact) {
 
       if (this.StartThowingFlag == false) {
@@ -240,15 +240,16 @@ export default class Game extends Phaser.Scene {
         );
         this.Character2.setup();
         this.Character2.init();
-        this.Character2.emitterMeth();
-        this.emitter.emit("game:startRun", this.startRunFlag);
+        // this.Character2.emitterMeth();
+        // this.emitter.emit("game:startRun", this.startRunFlag);
+        this.Character2.beforethrowFun(this.startRunFlag);
         this.Character2.play("beforeThrow");
 
       }
     }
 
 
-    if (Global.characterPos.x >= 4300 * 1.4 * this.scaleFact) {
+    if (Global.characterPos.x >= 1300 * 1.4 * this.scaleFact) {
       // if (Global.characterPos.x >= 1000 * this.scaleFact) {
 
       if (this.EndRunningFlag == false) {
@@ -256,9 +257,14 @@ export default class Game extends Phaser.Scene {
         console.log("EndOnce")
         this.startRunFlag = false;
         this.runButton.visible = false;
-        this.throwButton.visible = true;
-        this.throwingSpeedFlag = true;
+        this.Character2.beforethrowFun(this.startRunFlag);
         this.emitter.emit("game:stopRun", this.startRunFlag);
+
+
+        setTimeout(() => {
+          this.throwingSpeedFlag = true;
+          this.throwButton.visible = true;
+        }, 1500);
         // this.Character.visible = false;
         // this.Character2 = new Character(
         //   this,

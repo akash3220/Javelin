@@ -16,7 +16,7 @@ export default class Character extends Phaser.GameObjects.Sprite {
     this.startFrame = 0;
     this.endFrame = 1;
 
-
+    console.log("Character setup");
 
   }
 
@@ -83,9 +83,10 @@ export default class Character extends Phaser.GameObjects.Sprite {
   }
 
 
-  throwFun() {
-    console.log("throing");
-    this.play("throw");
+  beforethrowFun(startRunFlag) {
+    this.startRunFlag = startRunFlag;
+    this.emitter.on("game:update", this.update.bind(this));
+    // this.play("throw");
     // console.log(this.throwAnimtion.isPlaying);
   }
 
