@@ -121,7 +121,10 @@ export default class Game extends Phaser.Scene {
       }
     });
     this.runButton.on("pointerup", () => {
-      this.isTapping = false;
+      if (Global.characterPos.x <= 2300 * 1.8 * this.scaleFact) {
+
+        this.isTapping = false;
+      }
     });
 
 
@@ -175,12 +178,15 @@ export default class Game extends Phaser.Scene {
     this.emitter.emit("game:update", delta);
 
 
-    if (this.isTapping) {
+    if (this.isTapping == true) {
       console.log("TapOn");
       Global.charSpeed += 0.02;
-    } else {
+    }
+    if (this.isTapping == false) {
+      console.log("TapOff");
       Global.charSpeed = Math.max(0.8, Global.charSpeed - 0.005);
     }
+    // console.log(Global.charSpeed);
 
 
 
@@ -218,6 +224,8 @@ export default class Game extends Phaser.Scene {
 
     if (Global.characterPos.x >= 2300 * 1.8 * this.scaleFact) {
       Global.lineCount = 1;
+      this.isTapping = null;
+
     }
 
 
@@ -229,7 +237,6 @@ export default class Game extends Phaser.Scene {
 
       if (this.StartThowingFlag == false) {
         this.StartThowingFlag = true;
-
         this.Character.visible = false;
         this.Character2 = new Character(
           this,

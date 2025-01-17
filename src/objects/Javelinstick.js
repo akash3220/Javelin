@@ -6,19 +6,18 @@ export default class Javelinstick extends Phaser.GameObjects.Group {
   constructor(scene, x) {
     super(scene, x);
 
-    scene.add.existing(this);
+    scene.add.existing(this, x);
+    this.throwSpeed = x;
+    // this.lengthValue = x * Global.charSpeed;
+    console.log(Global.charSpeed);
+    console.log(x);
+    console.log(Global.characterPos.x + " Chara" + Global.characterPos.y);
 
-
-    // this.lengthValue = 5;
-    this.lengthValue = x * Global.charSpeed;
-    console.log(this.lengthValue);
     // this.lengthValue = 3000;
     // console.log(this.lengthValue);
     this.initialStickValue = { x: 0, y: 0 };
-
-
-
   }
+
   setup() {
     setScaleFactor.call(this, false);
     this.emitter = EventEmitter.getObj();
@@ -28,14 +27,27 @@ export default class Javelinstick extends Phaser.GameObjects.Group {
     this.graphics = this.scene.add.graphics();
     this.path = new Phaser.Curves.Path();
     this.path = new Phaser.Curves.Path(Global.characterPos.x, Global.characterPos.y);
-    // this.path = new Phaser.Curves.Path(Global.characterPos.x + 100, Global.characterPos.y - 550);
+    this.path = new Phaser.Curves.Path(Global.characterPos.x + 100, Global.characterPos.y - 550);
+
+    // console.log(Global.characterPos.x + (200 * this.lengthValue * this.throwSpeed * 10 * 3) * this.scaleFact);
+
+
+    //     2.1250000000000067
+    //  288
+    //  7244.295144550262 Chara1968.4224244466914
 
     // this.path.ellipseTo(this.lengthValue, 400, 200, 5, false, 0);
     this.path.splineTo([
-      Global.characterPos.x + 120 * (this.lengthValue / 30) * this.scaleFact,
-      (Global.characterPos.y / this.lengthValue) * this.scaleFact,
-      Global.characterPos.x + (200 * this.lengthValue * 10 * 3) * this.scaleFact,
-      Global.characterPos.y - 400 + 200 * this.scaleFact]);
+      Global.characterPos.x + (Global.charSpeed * this.throwSpeed * 10) * this.scaleFact,
+      Global.characterPos.y - 1000 * this.scaleFact,
+      Global.characterPos.x + (Global.charSpeed * this.throwSpeed * 20) * this.scaleFact,
+      Global.characterPos.y - 500 * this.scaleFact]);
+
+    // this.path.splineTo([
+    //   Global.characterPos.x + 120  * this.scaleFact,
+    //   (Global.characterPos.y / this.lengthValue) * this.scaleFact,
+    //   Global.characterPos.x + (200 * this.lengthValue * 10 * 3) * this.scaleFact,
+    //   Global.characterPos.y - 400 + 200 * this.scaleFact]);
 
     this.graphics.setAlpha(1);
 
